@@ -39,4 +39,4 @@ while not authenticated:
                 print("Password yang anda isi salah \n")
                 break
         elif i == len(mahasiswa)-1:
-            print(f"Tidak dapat menemukan akun mahasiswa dengan NIM {nim} {i} \n")
+            print(f"Tidak dapat menemukan akun mahasiswa dengan NIM {nim}\n")
