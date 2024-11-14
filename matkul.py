@@ -1,0 +1,16 @@
+#progress fitur matkul
+def matakuliah():
+    kode_mk = int(input("Masukkan Kode Mata Kuliah\t: "))
+    nama_mk = input("Masukkan Nama Mata Kuliah\t: ")
+    nama_dosen = input("Masukkan Nama Dosen Pengampu\t: ")
+    kode_dosen = input("Masukkan Kode Dosen\t: ")
+    sks = int(input("Masukkan Jumlah SKS\t: "))
+    penanggung_jawab = input("Masukkan Nama Penanggung Jawab Mata Kuliah\t: ")
+    print("\n--- Data Mata Kuliah yang Dimasukkan ---")
+    print(f"Kode Mata Kuliah\t: {kode_mk}")
+    print(f"Nama Mata Kuliah\t: {nama_mk}")
+    print(f"Nama Dosen\t: {nama_dosen}")
+    print(f"Kode Dosen\t: {kode_dosen}")
+    print(f"Jumlah SKS\t: {sks}")
+    print(f"Penanggung Jawab\t: {penanggung_jawab}")
+matakuliah()
