@@ -9,7 +9,7 @@ absensi = {}
 
 while True:
     print("\nMasukkan urutan absen:")
-    print("1. Input absensi satu persatu (contoh: 1)")
+    print("1. Input absensi satu persatu (contoh: 1)") #TODO = no need to choose here but automatically decide based on input if its int or range
     print("2. Input absensi bulk (contoh: 1-18)")
     pilihan = input("Pilihan (1/2): ")
 
