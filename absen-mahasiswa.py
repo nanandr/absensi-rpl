@@ -1,5 +1,5 @@
 print("=============================================================")
-print("\t\t     Sistem Absensi")
+print("\t\tSistem Absensi [Mahasiswa]")
 print("")
 print("\t\tRekayasa Perangkat Lunak")
 print("\t    Universitas Pendidikan Indonesia")
