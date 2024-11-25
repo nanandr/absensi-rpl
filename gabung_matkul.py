@@ -1,4 +1,4 @@
-from mata_kuliah import mata_kuliah
+from model.mata_kuliah import mata_kuliah
 
 found = False
 

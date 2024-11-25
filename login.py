@@ -1,4 +1,4 @@
-from mahasiswa import mahasiswa
+from model.mahasiswa import mahasiswa
 
 def login (nim: int, password: str) -> dict:
     for i in range(len(mahasiswa)):
