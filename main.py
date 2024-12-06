@@ -1,6 +1,8 @@
+from ui.title import title
+from ui.divider import div
+
 from login import login
-from header.title import title
-from header.divider import div
+from nav import nav
 
 def main ():
     title()
@@ -15,6 +17,8 @@ def main ():
         res = login(nim, password)
         authenticated = res["authenticated"]
     
+    nav()
     user = res["mahasiswa"] #Dictionary akun mahasiswa
+
     
 main()

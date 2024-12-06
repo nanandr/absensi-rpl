@@ -1,4 +1,4 @@
-from header.divider import div
+from ui.divider import div
 
 def title () -> None:
     div(1)
