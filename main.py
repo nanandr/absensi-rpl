@@ -17,7 +17,15 @@ def main ():
         res = login(nim, password)
         authenticated = res["authenticated"]
     
-    nav()
+    while authenticated:
+        navigate_to = nav()
+        if navigate_to == 1:
+            pass
+        elif navigate_to == 2:
+            pass
+        elif navigate_to == 3:
+            authenticated = False
+
     user = res["mahasiswa"] #Dictionary akun mahasiswa
 
     
