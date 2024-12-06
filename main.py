@@ -23,7 +23,7 @@ def main ():
         if navigate_to == 1:
             matkul.create()
         elif navigate_to == 2:
-            pass
+            matkul.join()
         elif navigate_to == 3:
             print("Berhasil logout")
             authenticated = False
