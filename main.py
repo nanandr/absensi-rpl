@@ -3,6 +3,7 @@ from ui.divider import div
 
 from login import login
 from nav import nav
+import matkul
 
 def main ():
     title()
@@ -20,10 +21,11 @@ def main ():
     while authenticated:
         navigate_to = nav()
         if navigate_to == 1:
-            pass
+            matkul.create()
         elif navigate_to == 2:
             pass
         elif navigate_to == 3:
+            print("Berhasil logout")
             authenticated = False
 
     user = res["mahasiswa"] #Dictionary akun mahasiswa
