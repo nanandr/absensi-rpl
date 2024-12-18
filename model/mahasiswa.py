@@ -1,22 +1,13 @@
-mahasiswa = [
-    {
-        "nama": "Nandana Rafi Ardika",
-        "nim": 2404158,
-        "password": "nanda123"
-    },
-    {
-        "nama": "Muhammad Yasir Royyan",
-        "nim": 2401266,
-        "password": "yasir123"
-    },
-    {
-        "nama": "Natasya Ramadhani",
-        "nim": 2403264,
-        "password": "natasya123"
-    },
-    {
-        "nama": "Wisnu Firmansyah Handjoyo",
-        "nim": 2404525,
-        "password": "wisnu123"
-    }
-]
+import model.model as model
+
+path = "data/mahasiswa.csv"
+
+def all () -> list:
+    return model.read(path)
+
+def find (key: str, val: any) -> dict:
+    data = model.read(path)
+    for item in data:
+        if item.get(key) == val:
+            return [item]
+    return []

@@ -1,34 +1,50 @@
-from ui.title import title
-from ui.divider import div
+from controller.login import login
+import view.welcome
 
-from login import login
-from nav import nav
-import matkul
+def menu(nav: list):
+    while True:
+        # Display the menu
+        for i in range(len(nav)):
+            print(f"[{i+1}] {nav[i]}")
+        
+        go_to = input(f"Navigasi ke halaman (1-{len(nav)}): ").strip()
+        
+        # Check if input is a digit
+        if not go_to.isdigit():
+            print("Harap masukkan angka yang valid.\n")
+            continue
+        
+        go_to = int(go_to)
+        
+        # Check if the input is in range
+        if 1 <= go_to <= len(nav):
+            return nav[go_to - 1]
+        
+        print("Menu yang anda pilih tidak tersedia. Pilih nomor yang sesuai.\n")
 
 def main ():
-    title()
     authenticated = False
+
+    # Before login
     while not authenticated:
-        print("Login Sistem Absensi RPL")
-        div(0)
-        nim = int(input("NIM: "))
-        password = input("Password: ")
-        div(1)
+        view.welcome.guest()
 
-        res = login(nim, password)
-        authenticated = res["authenticated"]
-    
+        nav = menu(["Login", "Register", "Exit"])
+        if nav == "Login":
+            if login():
+                authenticated = True
+        elif nav == "Register":
+            pass
+        elif nav == "Exit":
+            break
+
     while authenticated:
-        navigate_to = nav()
-        if navigate_to == 1:
-            matkul.create()
-        elif navigate_to == 2:
-            matkul.join()
-        elif navigate_to == 3:
-            print("Berhasil logout")
+        view.welcome.user()
+
+        nav = menu(["Buat Mata Kuliah", "Gabung Mata Kuliah", "Logout"])
+
+        if nav == "Logout":
             authenticated = False
-
-    user = res["mahasiswa"] #Dictionary akun mahasiswa
-
+            break
     
 main()
