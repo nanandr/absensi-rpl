@@ -1,23 +1,10 @@
-import controller.controller as controller
-from controller.login import login
+import controller.mata_kuliah as mata_kuliah
 import view.welcome
-
-def menu(nav: list):
-    # Display the menu
-    for i in range(len(nav)):
-        print(f"[{i+1}] {nav[i]}")
-    while True:
-        
-        go_to = controller.request(f"Navigasi ke halaman (1-{len(nav)})", ["required", "digit"])
-        go_to = int(go_to)
-        
-        # Check if the input is in range
-        if 1 <= go_to <= len(nav):
-            return nav[go_to - 1]
-        
-        print("Menu yang anda pilih tidak tersedia. Pilih nomor yang sesuai.\n")
+from controller.login import login
+from view.menu import menu
 
 def main ():
+    user = {}
     authenticated = False
 
     # Before login
@@ -26,8 +13,10 @@ def main ():
 
         nav = menu(["Login", "Register", "Exit"])
         if nav == "Login":
-            if login():
+            login_data = login()
+            if login_data["auth"]:
                 authenticated = True
+                user = login_data["user"]
         elif nav == "Register":
             pass
         elif nav == "Exit":
@@ -36,9 +25,13 @@ def main ():
     while authenticated:
         view.welcome.user()
 
-        nav = menu(["Buat Mata Kuliah", "Gabung Mata Kuliah", "Logout"])
+        nav = menu(["Absen", "Lihat Rekap Absen", "Buat Mata Kuliah", "Gabung Mata Kuliah", "Kelola Mata Kuliah", "Logout"])
 
-        if nav == "Logout":
+        if nav == "Buat Mata Kuliah":
+            mata_kuliah.create()
+        elif nav == "Kelola Mata Kuliah":
+            mata_kuliah.kelola(user["nim"])
+        elif nav == "Logout":
             authenticated = False
             break
     
