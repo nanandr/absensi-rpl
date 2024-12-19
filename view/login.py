@@ -8,7 +8,3 @@ def login () -> dict:
 def success (name: str) -> None:
     view.div("-")
     print(f"Selamat datang, {name}\n")
-
-def fail (message: str) -> None:
-    view.div("-")
-    print(f"{message}\n")

@@ -1,20 +1,14 @@
 import view.login as view
+import controller.controller as controller
 import model.mahasiswa
 
 def login () -> bool:
     authenticated = False
     while not authenticated:
         view.login()    
-        nim, password = "", ""
-        while nim == "":
-            nim = input("NIM: ")
-            if nim.strip() == "":
-                view.fail("NIM tidak boleh kosong")
-
-        while password == "":
-            password = input("Password: ")
-            if password.strip() == "":
-                view.fail("Password tidak boleh kosong")
+        
+        nim = controller.request("NIM", ["required", "digit"])
+        password = controller.request("Password", ["required"])
 
         mahasiswa = model.mahasiswa.find("nim", nim)
         if len(mahasiswa) > 0:
@@ -22,8 +16,8 @@ def login () -> bool:
                 authenticated = True
                 view.success(mahasiswa[0]["name"])
             else:
-                view.fail("Password yang anda isi salah")
+                print("Password yang anda isi salah.\n")
         else:
-            view.fail("NIM yang anda isi tidak tersedia")
+            print("NIM yang anda isi tidak tersedia.\n")
         
     return authenticated

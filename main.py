@@ -1,19 +1,14 @@
+import controller.controller as controller
 from controller.login import login
 import view.welcome
 
 def menu(nav: list):
+    # Display the menu
+    for i in range(len(nav)):
+        print(f"[{i+1}] {nav[i]}")
     while True:
-        # Display the menu
-        for i in range(len(nav)):
-            print(f"[{i+1}] {nav[i]}")
         
-        go_to = input(f"Navigasi ke halaman (1-{len(nav)}): ").strip()
-        
-        # Check if input is a digit
-        if not go_to.isdigit():
-            print("Harap masukkan angka yang valid.\n")
-            continue
-        
+        go_to = controller.request(f"Navigasi ke halaman (1-{len(nav)})", ["required", "digit"])
         go_to = int(go_to)
         
         # Check if the input is in range
