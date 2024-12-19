@@ -1,34 +1,38 @@
-from ui.title import title
-from ui.divider import div
-
-from login import login
-from nav import nav
-import matkul
+import controller.mata_kuliah as mata_kuliah
+import view.welcome
+from controller.login import login
+from view.menu import menu
 
 def main ():
-    title()
+    user = {}
     authenticated = False
+
+    # Before login
     while not authenticated:
-        print("Login Sistem Absensi RPL")
-        div(0)
-        nim = int(input("NIM: "))
-        password = input("Password: ")
-        div(1)
+        view.welcome.guest()
 
-        res = login(nim, password)
-        authenticated = res["authenticated"]
-    
+        nav = menu(["Login", "Register", "Exit"])
+        if nav == "Login":
+            login_data = login()
+            if login_data["auth"]:
+                authenticated = True
+                user = login_data["user"]
+        elif nav == "Register":
+            pass
+        elif nav == "Exit":
+            break
+
     while authenticated:
-        navigate_to = nav()
-        if navigate_to == 1:
-            matkul.create()
-        elif navigate_to == 2:
-            matkul.join()
-        elif navigate_to == 3:
-            print("Berhasil logout")
+        view.welcome.user()
+
+        nav = menu(["Absen", "Lihat Rekap Absen", "Buat Mata Kuliah", "Gabung Mata Kuliah", "Kelola Mata Kuliah", "Logout"])
+
+        if nav == "Buat Mata Kuliah":
+            mata_kuliah.create()
+        elif nav == "Kelola Mata Kuliah":
+            mata_kuliah.kelola(user["nim"])
+        elif nav == "Logout":
             authenticated = False
-
-    user = res["mahasiswa"] #Dictionary akun mahasiswa
-
+            break
     
 main()
