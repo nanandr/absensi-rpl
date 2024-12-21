@@ -20,3 +20,23 @@ def find (path: str, key: str, val: any) -> list:
         if item.get(key) == val:
             return [item]
     return []
+
+def save (path: str, data: list) -> list:
+    fieldNames = data[0].keys()
+
+    with open(path, mode="w", newline="", encoding="utf-8") as file:
+        writer = csv.DictWriter(file, fieldnames=fieldNames)
+        writer.writeheader()
+        writer.writerows(data)
+
+def append(path: str, data: list) -> list:
+    fieldNames = data[0].keys()
+    
+    # Check if file exists and is non-empty
+    file_exists = os.path.exists(path) and os.path.getsize(path) > 0
+
+    with open(path, mode="a", newline="", encoding="utf-8") as file:
+        writer = csv.DictWriter(file, fieldnames=fieldNames)
+        if not file_exists:  # Write header only if the file is new or empty
+            writer.writeheader()
+        writer.writerows(data)

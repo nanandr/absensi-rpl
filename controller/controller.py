@@ -12,6 +12,7 @@ def request (name: str, rules: list) -> str: # Rules: required, digit, date
         if "date" in rules:
             if not re.match(r"^\d{4}-\d{2}-\d{2}$", val):
                 print(f"{name} harus dalam format YYYY-MM-DD.\n")
+                continue
             try:
                 from datetime import datetime
                 datetime.strptime(val, "%Y-%m-%d")
