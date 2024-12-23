@@ -16,10 +16,11 @@ def read (path: str) -> list:
     
 def find (path: str, key: str, val: any) -> list:
     data = read(path)
+    match = []
     for item in data:
         if item.get(key) == val:
-            return [item]
-    return []
+            match.append(item)
+    return match
 
 def save (path: str, data: list) -> list:
     fieldNames = data[0].keys()

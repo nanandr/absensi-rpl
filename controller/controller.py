@@ -6,6 +6,15 @@ def request (name: str, rules: list) -> str: # Rules: required, digit, date
         if "required" in rules and val.strip() == "":
             print(f"{name} tidak boleh kosong.\n")
             continue
+        if "range" in rules:
+            range_match = re.match(r"^(\d+)-(\d+)$", val)
+            if not range_match:
+                print(f"Input harus dalam format angka-angka, seperti '1-5'.\n")
+                continue
+            start, end = map(int, range_match.groups())
+            if start > end:
+                print(f"Rentang tidak valid: angka awal harus lebih kecil atau sama dengan angka akhir.\n")
+                continue
         if "digit" in rules and not val.isdigit():
             print(f"{name} harus berupa angka.\n")
             continue

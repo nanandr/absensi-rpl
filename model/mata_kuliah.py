@@ -1,4 +1,3 @@
-import csv
 import model.model as model
 
 path = "data/mata_kuliah.csv"
@@ -11,23 +10,28 @@ def all () -> list:
 def find (key: str, val: any) -> list:
     return model.find(path, key, val)
 
-def create (nama: str,kode: str,dosen: str,kode_dosen: str,sks: int,pj: str):
+def create (data, nim):
     matkul = {
-        "nama": nama,
-        "kode": kode,
-        "dosen": dosen,
-        "kode_dosen": kode_dosen,
-        "sks": sks,
-        "pj": pj
+        "nama": data["nama"],
+        "kode": data["kode"],
+        "dosen": data["dosen"],
+        "kode_dosen": data["kode_dosen"],
+        "sks": data["sks"],
+        "pj": nim
     }
-    
-    data = all()
-    data.append(matkul)
 
-    model.save(data)
+    model.append(path, [matkul])
 
-def enroll (nim: str, kelas: str) -> dict:
-    data = [{"nim": nim, "kelas": kelas}]
+def enrolled (user: dict) -> list:
+    enrolled_class = model.find(enrollment_path, "nim", user["nim"])
+    data = []
+    for i in range(len(enrolled_class)):
+        matkul = find("kode", enrolled_class[i]["kode"])
+        data.append(matkul[0])
+    return data
+
+def join (nim: str, kelas: str) -> dict:
+    data = [{"nim": nim, "kode": kelas}]
     model.append(enrollment_path, data)
 
     return data

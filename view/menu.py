@@ -11,6 +11,9 @@ def menu(nav: list):
         
         # Check if the input is in range
         if 1 <= go_to <= len(nav):
-            return nav[go_to - 1]
+            return {
+                "index": go_to - 1,
+                "val": nav[go_to - 1]
+            }
         
         print("Menu yang anda pilih tidak tersedia. Pilih nomor yang sesuai.\n")

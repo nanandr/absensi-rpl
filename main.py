@@ -1,4 +1,5 @@
 import controller.mata_kuliah as mata_kuliah
+import controller.absen as absen
 import view.welcome
 from controller.login import login
 from view.menu import menu
@@ -11,7 +12,7 @@ def main ():
     while not authenticated:
         view.welcome.guest()
 
-        nav = menu(["Login", "Register", "Exit"])
+        nav = menu(["Login", "Register", "Exit"])["val"]
         if nav == "Login":
             login_data = login()
             if login_data["auth"]:
@@ -25,12 +26,18 @@ def main ():
     while authenticated:
         view.welcome.user()
 
-        nav = menu(["Absen", "Lihat Rekap Absen", "Buat Mata Kuliah", "Gabung Mata Kuliah", "Kelola Mata Kuliah", "Logout"])
+        nav = menu(["Absen", "Lihat Rekap Absen", "Buat Mata Kuliah", "Gabung Mata Kuliah", "Kelola Mata Kuliah", "Logout"])["val"]
 
-        if nav == "Buat Mata Kuliah":
-            mata_kuliah.create()
+        if nav == "Absen":
+            absen.create(user)
+        elif nav == "Lihat Rekap Absen":
+            absen.rekap(user)
+        elif nav == "Buat Mata Kuliah":
+            mata_kuliah.create(user)
+        elif nav == "Gabung Mata Kuliah":
+            mata_kuliah.join(user)
         elif nav == "Kelola Mata Kuliah":
-            mata_kuliah.kelola(user["nim"])
+            mata_kuliah.select(user)
         elif nav == "Logout":
             authenticated = False
             break
