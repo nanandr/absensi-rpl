@@ -15,7 +15,15 @@ def create (nama: str,nim: int,password: str):
         "password": password,
     }
     
+    # ADD FUNCTION TO CHECK IF NIM EXISTS
+
     data = all()
+
+    if len(find("nim", mahasiswa["nim"])) > 0:
+        return []
+
     data.append(mahasiswa)
 
-    model.save(data)
+    model.save(path, data)
+
+    return [mahasiswa]

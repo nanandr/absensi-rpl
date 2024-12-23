@@ -1,8 +1,14 @@
 import view.view as view
 
-def login () -> dict:
+def login () -> None:
     view.div("-")
     print("Login Sistem Absensi RPL")
+    view.div("-")
+
+def signup () -> None:
+    view.div("-")
+    print("Signup Sistem Absensi RPL")
+    print("Buat Akun Mahasiswa")
     view.div("-")
 
 def success (name: str) -> None:

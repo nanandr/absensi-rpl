@@ -1,7 +1,7 @@
 import controller.mata_kuliah as mata_kuliah
 import controller.absen as absen
 import view.welcome
-from controller.login import login
+import controller.auth
 from view.menu import menu
 
 def main ():
@@ -14,12 +14,15 @@ def main ():
 
         nav = menu(["Login", "Register", "Exit"])["val"]
         if nav == "Login":
-            login_data = login()
+            login_data = controller.auth.login()
             if login_data["auth"]:
                 authenticated = True
                 user = login_data["user"]
         elif nav == "Register":
-            pass
+            signup_data = controller.auth.signup()
+            if signup_data["auth"]:
+                authenticated = True
+                user = signup_data["user"]    
         elif nav == "Exit":
             break
 
