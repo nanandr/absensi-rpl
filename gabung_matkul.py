@@ -8,7 +8,7 @@ while not found:
     for i in range(len(mata_kuliah)):
         if mata_kuliah[i]["kode"] == kode:
             found = True
-            print(f"Selamat datang di mata kuliah {mata_kuliah[i]["nama"]}")
+            print(f"Selamat datang di mata kuliah {mata_kuliah[i]['nama']}")
             break
         elif i == len(mata_kuliah)-1:
             print("Tidak dapat menemukan mata kuliah \n")

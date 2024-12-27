@@ -4,7 +4,7 @@ def login (nim: int, password: str) -> dict:
     for i in range(len(mahasiswa)):
         if mahasiswa[i]["nim"] == nim:
             if mahasiswa[i]["password"] == password:
-                print(f"Selamat datang {mahasiswa[i]["nama"]}")
+                print(f"Selamat datang {mahasiswa[i]['nama']}")
                 return {
                     "authenticated": True,
                     "mahasiswa": mahasiswa[i]
