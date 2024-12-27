@@ -11,7 +11,7 @@ def create (user: dict):
     model.mata_kuliah.enroll(user["nim"], data["kode"])
     view.view.div("-")
     print("Berhasil membuat mata kuliah baru")
-    print(f"Kode Gabung: {data["kode"]}")
+    print(f"Kode Gabung: {data['kode']}")
 
 def join (user: dict):
     data = view.mata_kuliah.join()
@@ -20,7 +20,7 @@ def join (user: dict):
     view.view.div("-")
     if len(matkul) > 0:
         model.mata_kuliah.join(user["nim"], data["kode"])
-        print(f"Berhasil Gabung Mata Kuliah: {matkul[0]["nama"]}")
+        print(f"Berhasil Gabung Mata Kuliah: {matkul[0]['nama']}")
     else:
         print("Mata Kuliah tidak ditemukan.")
 
