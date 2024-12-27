@@ -24,6 +24,9 @@ def join (user: dict):
     matkul = model.mata_kuliah.find("kode", data["kode"])
     view.view.div("-")
     if len(matkul) > 0:
+        if any(enrolled["kode"] == data["kode"] for enrolled in model.mata_kuliah.enrolled(user)):
+            print("Anda sudah bergabung di mata kuliah ini.")
+            return
         model.mata_kuliah.join(user["nim"], data["kode"])
         print(f"Berhasil Gabung Mata Kuliah: {matkul[0]['nama']}")
     else:
