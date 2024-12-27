@@ -8,7 +8,7 @@ def create (user: dict):
     data = view.mata_kuliah.create()
     model.mata_kuliah.create(data, user["nim"])
     # ENROLL PJ TO CLASS
-    model.mata_kuliah.enroll(user["nim"], data["kode"])
+    model.mata_kuliah.join(user["nim"], data["kode"])
     view.view.div("-")
     print("Berhasil membuat mata kuliah baru")
     print(f"Kode Gabung: {data["kode"]}")

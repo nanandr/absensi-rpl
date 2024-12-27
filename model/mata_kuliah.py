@@ -14,7 +14,7 @@ def create (data, nim):
     matkul = {
         "nama": data["nama"],
         "kode": data["kode"],
-        "dosen": data["dosen"],
+        "dosen": f'{data["dosen"]}',
         "kode_dosen": data["kode_dosen"],
         "sks": data["sks"],
         "pj": nim

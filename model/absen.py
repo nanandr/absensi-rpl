@@ -40,6 +40,10 @@ def create (data: list, kelas: str, status: str, tanggal: str) -> list:
             "kode": kelas,
             "status": status,
             "tanggal": tanggal
+            # time param
+            # empty manual time = auto time
+            # pj = manual & auto
+            # students = auto (if auto_date) otherwise manual
             })
         
     model.append(path, absen)
