@@ -31,7 +31,10 @@ def create_pj (matkul, mahasiswa):
     
 def rekap (user):
     kelas = model.mata_kuliah.enrolled(user)
-    i = view.absen.enrolled(kelas)["index"]
+    nav = view.absen.enrolled(kelas)
+    if nav["val"] == "Kembali":
+        return
+    i = nav["index"]
     rekap = model.absen.get([user], kelas[i]["kode"])
     view.absen.rekap(rekap, kelas[i]["nama"])
 
