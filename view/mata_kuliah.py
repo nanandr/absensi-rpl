@@ -45,9 +45,9 @@ def select (data: list) -> None:
 
 def action (matkul: dict):
     view.div("=")
-    print(f"{matkul["nama"]}")
-    print(f"Dosen Pengampu: {matkul["dosen"]}")
-    print(f"Kode Gabung: {matkul["kode"]}")
+    print(f"{matkul['nama']}")
+    print(f"Dosen Pengampu: {matkul['dosen']}")
+    print(f"Kode Gabung: {matkul['kode']}")
     view.div("=")
     nav = menu(["Kelola Absensi", "Rekap Absensi", "Kembali"])
     
@@ -59,7 +59,7 @@ def daftar_mahasiswa (matkul):
     view.div("-")
     enrolled = get_mahasiswa(matkul["kode"])
     for i in range(len(enrolled)):
-        print(f"[{i+1}] {enrolled[i]["nama"]}")
+        print(f"[{i+1}] {enrolled[i]['nama']}")
     # choose indexes
     view.div("-")
 

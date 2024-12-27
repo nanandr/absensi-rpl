@@ -35,11 +35,11 @@ def rekap (data: list, kelas: str):
     print(f"Absensi Kelas {kelas} \n")
     view.view.div("-")
     for mahasiswa in data:
-        print(f"{mahasiswa["nama"]}: {mahasiswa["absen"]}")
+        print(f"{mahasiswa['nama']}: {mahasiswa['absen']}")
 
 def rekap_pj (mahasiswa: list, kelas: str):
     view.view.div("-")
     print(f"Absensi Kelas {kelas} \n")
     view.view.div("-")
     for i in range(len(mahasiswa)):
-        print(f"[{i+1}] {mahasiswa[i]["nama"]}: {mahasiswa[i]["absen"]}")
+        print(f"[{i+1}] {mahasiswa[i]['nama']}: {mahasiswa[i]['absen']}")
