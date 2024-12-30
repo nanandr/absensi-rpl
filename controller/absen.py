@@ -7,21 +7,24 @@ import view.view
 import controller.controller as controller
 
 def create (user):
-    # GET ENROLLED CLASS, PASS TO VIEW
     kelas = model.mata_kuliah.enrolled(user)
     nav = view.absen.enrolled(kelas)
     if nav["val"] == "Kembali":
         return
     i = nav["index"]
-    tanggal = view.absen.tanggal(kelas[i]["nama"])
-    status = view.absen.status()
-
-    # nim,kode,status,tanggal
-    model.absen.create([user], kelas[i]["kode"], status, tanggal)
-    print("Data absen berhasil ditambahkan.")
+    if model.mata_kuliah.is_now(kelas[i]):
+        # bisa absen jika waktu = jadwal matkul
+        status = view.absen.status() # if hadir & time > time + sks = telat
+        model.absen.create([user], kelas[i]["kode"], status)
+        print("Data absen berhasil ditambahkan.")
+        return
+    else:
+        print("Kelas yang anda pilih belum dimulai.")
+        return
 
 def create_pj (matkul, mahasiswa):
     tanggal = controller.request("Tanggal", ["required", "date"])
+    # timestamp = tanggal + matkul.jadwal
     select_range = controller.request(f"Pilih Rentang Mahasiswa (1-{len(mahasiswa)})", ["required", "range"])
     start, end = map(int, select_range.split("-"))
     status = view.absen.status()

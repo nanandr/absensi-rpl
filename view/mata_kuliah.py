@@ -12,7 +12,9 @@ def create () -> None:
     dosen = controller.request("Nama Dosen Pengampu", ["required"])
     kode_dosen = controller.request("Kode Dosen", ["required"])
     sks = controller.request("Jumlah SKS", ["required", "digit"])
-    # day = # day of week
+    print("Jadwal Mata Kuliah:")
+    day = menu(["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"])
+    time = controller.request("Jam (HH:MM)", ["required", "time"])
 
     return {
         "nama": nama,
@@ -20,8 +22,33 @@ def create () -> None:
         "dosen": dosen,
         "kode_dosen": kode_dosen,
         "sks": sks,
+        "day": day["index"],
+        "time": time
     }
     
+def edit (matkul: dict) -> None:
+    view.div("=")
+    print("Edit Mata Kuliah")
+    print(f"{matkul['nama']}")
+    view.div("=")
+    nama = controller.request("Nama Mata Kuliah", ["required"])
+    dosen = controller.request("Nama Dosen Pengampu", ["required"])
+    kode_dosen = controller.request("Kode Dosen", ["required"])
+    sks = controller.request("Jumlah SKS", ["required", "digit"])
+    print("Jadwal Mata Kuliah:")
+    day = menu(["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"])
+    time = controller.request("Jam (HH:MM)", ["required", "time"])
+
+    return {
+        "nama": nama,
+        "kode": matkul['kode'],
+        "dosen": dosen,
+        "kode_dosen": kode_dosen,
+        "sks": sks,
+        "day": day["index"],
+        "time": time
+    }
+
 def join () -> dict:
     kode = controller.request("Kode Mata Kuliah", ["required"])
     return {
@@ -49,7 +76,7 @@ def action (matkul: dict):
     print(f"Dosen Pengampu: {matkul['dosen']}")
     print(f"Kode Gabung: {matkul['kode']}")
     view.div("=")
-    nav = menu(["Kelola Absensi", "Rekap Absensi", "Kembali"])
+    nav = menu(["Kelola Absensi", "Rekap Absensi", "Edit Mata Kuliah", "Kembali"])
     
     return nav
 

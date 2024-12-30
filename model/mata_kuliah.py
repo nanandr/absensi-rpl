@@ -17,10 +17,29 @@ def create (data, nim):
         "dosen": f'{data["dosen"]}',
         "kode_dosen": data["kode_dosen"],
         "sks": data["sks"],
-        "pj": nim
+        "pj": nim,
+        "day": data["day"],
+        "time": data["time"]
     }
 
     model.append(path, [matkul])
+
+def edit (kode, data):
+    matkuls = all()
+    for i, matkul in enumerate(matkuls):
+        if matkul["kode"] == kode:
+            matkuls[i] = {
+                "nama": data["nama"],
+                "kode": kode,
+                "dosen": f'{data["dosen"]}',
+                "kode_dosen": data["kode_dosen"],
+                "sks": data["sks"],
+                "pj": matkul["pj"],
+                "day": data["day"],
+                "time": data["time"]
+            }
+            break
+    model.save(path, matkuls)
 
 def enrolled (user: dict) -> list:
     enrolled_class = model.find(enrollment_path, "nim", user["nim"])
@@ -42,3 +61,6 @@ def get_mahasiswa (matkul: str) -> list:
     enrolled_mahasiswa = [item["nim"] for item in enrolled if item["kode"] == matkul]
     
     return [mahasiswa for mahasiswa in data if mahasiswa["nim"] in enrolled_mahasiswa]
+
+def is_now (matkul: dict):
+    return int(matkul["day"]) == model.get_day() and model.get_time() >= model.get_time(matkul["time"])

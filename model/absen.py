@@ -32,18 +32,14 @@ def all () -> list:
 def find (key: str, val: any) -> list:
     return model.find(path, key, val)
 
-def create (data: list, kelas: str, status: str, tanggal: str) -> list:
+def create (data: list, kelas: str, status: str, tanggal = None) -> list:
     absen = []
     for mahasiswa in data:
         absen.append({
             "nim": mahasiswa["nim"],
             "kode": kelas,
             "status": status,
-            "tanggal": tanggal
-            # time param
-            # empty manual time = auto time
-            # pj = manual & auto
-            # students = auto (if auto_date) otherwise manual
+            "timestamp": f"{model.get_time()} {tanggal if tanggal else model.get_date()}"
             })
         
     model.append(path, absen)
@@ -59,7 +55,7 @@ def get(data: list, kelas: str) -> list:
         for entry in data_absen:
             if entry["kode"] == kelas:
                 # Parse the date from data_absen
-                entry_date = datetime.strptime(entry["tanggal"], "%Y-%m-%d")
+                entry_date = datetime.strptime(entry["timestamp"], "%Y-%m-%d")
 
                 # Calculate the week index
                 week_index = (entry_date - current_semester()).days // 7

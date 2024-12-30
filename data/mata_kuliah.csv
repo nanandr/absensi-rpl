@@ -1,9 +1,9 @@
-nama,kode,dosen,kode_dosen,sks,pj,day
-Pengantar Rekayasa Perangkat Lunak,RL116,"Dian Anggraeni, S.ST, M.T",3082,3,2403372,1
-Literasi Teknologi Informasi & Komunikasi,RL115,"Yulia Retnowati, S.Pd, M.T",3442,3,2401336,3
-Dasar Pemrograman,RL117,"Indira Syawanodya, S.Kom, M.Kom",3081,4,2401300,3
-Matematika Dasar,RL118,"Fahmi Candra Permana S.Si",2993,4,2402741,4
-Pendidikan Bahasa Indonesia,KU106,"Yayang Furi Furnamasari, M.Pd",3146,2,2404853,2
-Pendidikan Pancasila,KU106,"Fully Rakhmayanti, M.Pd",3216,2,2404525,2
-Pendidikan Agama islam,KU100,"Dr. Jenuri, S.Ag, M.Pd",2449,2,2400268,1
-Pengenalan AI,AI001,"Dr. Udin",UD001,3,2404158,0
+nama,kode,dosen,kode_dosen,sks,pj,day,time
+Pengantar Rekayasa Perangkat Lunak,RL116,"Dian Anggraeni, S.ST, M.T",3082,3,2403372,1,09:30
+Literasi Teknologi Informasi & Komunikasi,RL115,"Yulia Retnowati, S.Pd, M.T",3442,3,2401336,3,13:00
+Dasar Pemrograman,RL117,"Indira Syawanodya, S.Kom, M.Kom",3081,4,2401300,3,08:40
+Matematika Dasar,RL118,Fahmi Candra Permana S.Si,2993,4,2402741,4,07:00
+Pendidikan Bahasa Indonesia,KU106,"Yayang Furi Furnamasari, M.Pd",3146,2,2404853,2,10:20
+Pendidikan Pancasila,KU106,"Fully Rakhmayanti, M.Pd",3216,2,2404525,2,13:00
+Pendidikan Agama islam,KU100,"Dr. Jenuri, S.Ag, M.Pd",2449,2,2400268,1,13:00
+Pengenalan Machine Learning,AI001,Dr. Udin M.Pd.,UD002,4,2404158,0,14:00

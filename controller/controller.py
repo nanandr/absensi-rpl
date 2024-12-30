@@ -28,5 +28,9 @@ def request (name: str, rules: list) -> str: # Rules: required, digit, date
             except ValueError:
                 print(f"{name} tidak valid. Gunakan format YYYY-MM-DD yang benar.\n")
                 continue
+        if "time" in rules:
+            if not re.match(r"^(?:[01]\d|2[0-3]):[0-5]\d$", val):
+                print(f"{name} harus dalam format HH:MM (contoh: 14:30).\n")
+                continue
 
         return val

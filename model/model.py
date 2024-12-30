@@ -1,3 +1,4 @@
+from datetime import datetime
 import csv
 import os
 
@@ -41,3 +42,16 @@ def append(path: str, data: list) -> list:
         if not file_exists:  # Write header only if the file is new or empty
             writer.writeheader()
         writer.writerows(data)
+
+def get_time (param_time = None):
+    if param_time:
+        return datetime.strptime(param_time, "%H:%M").time()
+    return datetime.now().time()
+
+def get_day ():
+    return datetime.now().weekday()
+
+def get_date (param_date = None):
+    if param_date:
+        return datetime.strptime(param_date, "%Y-%m-%d").date()
+    return datetime.now().date()

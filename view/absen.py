@@ -26,6 +26,7 @@ def tanggal (kelas: str):
     
 
 def status ():
+    view.view.div("-")
     print("Kehadiran:")
     status = menu(["Hadir", "Sakit", "Izin"])
     return status["val"]

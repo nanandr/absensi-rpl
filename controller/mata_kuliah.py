@@ -32,12 +32,6 @@ def join (user: dict):
     else:
         print("Mata Kuliah tidak ditemukan.")
 
-def update ():
-    pass
-
-def delete ():
-    pass
-
 def select (user: dict):
     # KELOLA/REKAP/KEMBALI
     matkuls = model.mata_kuliah.find("pj", user["nim"])
@@ -56,5 +50,10 @@ def select (user: dict):
     elif action["val"] == "Rekap Absensi":
         enrolled = model.mata_kuliah.get_mahasiswa(matkul["kode"])
         controller.absen.rekap_pj(matkul, enrolled)
+    elif action["val"] == "Edit Mata Kuliah":
+        data = view.mata_kuliah.edit(matkul)
+        model.mata_kuliah.edit(matkul['kode'], data)
+        view.view.div("-")
+        print("Berhasil mengubah data mata kuliah. \n")
     elif action["val"] == "Kembali":
         return
