@@ -55,8 +55,9 @@ def get(data: list, kelas: str) -> list:
         for entry in data_absen:
             if entry["kode"] == kelas:
                 # Parse the date from data_absen
-                entry_date = datetime.strptime(entry["timestamp"], "%Y-%m-%d")
-
+                entry_date = datetime.strptime(entry["timestamp"], "%H:%M:%S.%f %Y-%m-%d")
+                # entry_date = timestamp.date()
+                
                 # Calculate the week index
                 week_index = (entry_date - current_semester()).days // 7
 
