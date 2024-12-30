@@ -1,11 +1,15 @@
+import json
 import model.model as model
 from datetime import datetime
 
 enrolled_path = "data/mahasiswa_mata_kuliah.csv"
 path = "data/absen.csv"
 
-total_weeks = 16
-start_semester = ["02-01", "09-01"]
+with open("config.json", "r") as file:
+    config = json.load(file)
+
+total_weeks = config["total_weeks"]
+start_semester = config["start_semester"]
 
 def current_semester ():
     today = datetime.today()
