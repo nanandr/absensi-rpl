@@ -15,7 +15,7 @@ def create (user):
     if model.mata_kuliah.is_now(kelas[i]):
         # bisa absen jika waktu = jadwal matkul
         status = view.absen.status() # if hadir & time > time + sks = telat
-        model.absen.create([user], kelas[i]["kode"], status)
+        model.absen.create([user], kelas[i]["kode_undangan"], status)
         print("Data absen berhasil ditambahkan.")
         return
     else:
@@ -29,7 +29,7 @@ def create_pj (matkul, mahasiswa):
     start, end = map(int, select_range.split("-"))
     status = view.absen.status()
 
-    model.absen.create(mahasiswa[start-1:end], matkul["kode"], status, tanggal)
+    model.absen.create(mahasiswa[start-1:end], matkul["kode_undangan"], status, tanggal)
     print("Data absen berhasil ditambahkan.")
     
 def rekap (user):
@@ -38,9 +38,9 @@ def rekap (user):
     if nav["val"] == "Kembali":
         return
     i = nav["index"]
-    rekap = model.absen.get([user], kelas[i]["kode"])
+    rekap = model.absen.get([user], kelas[i]["kode_undangan"])
     view.absen.rekap(rekap, kelas[i]["nama"])
 
 def rekap_pj (matkul, mahasiswa):
-    rekap = model.absen.get(mahasiswa, matkul["kode"])
+    rekap = model.absen.get(mahasiswa, matkul["kode_undangan"])
     view.absen.rekap_pj(rekap, matkul["nama"])

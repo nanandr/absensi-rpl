@@ -1,3 +1,4 @@
+import random
 import model.model as model
 
 path = "data/mata_kuliah.csv"
@@ -10,8 +11,19 @@ def all () -> list:
 def find (key: str, val: any) -> list:
     return model.find(path, key, val)
 
+def generate_invite_code (kode):
+    while True:
+        random_digits = random.randint(100000, 999999) # generate 6 digit random int
+        invite_code = f"{kode}_{random_digits}"
+
+        if len(find("kode_undangan", invite_code)) == 0:
+            break
+
+    return invite_code
+
 def create (data, nim):
     matkul = {
+        "id": f"{nim}_{data['kode']}",
         "nama": data["nama"],
         "kode": data["kode"],
         "dosen": f'{data["dosen"]}',
@@ -19,7 +31,8 @@ def create (data, nim):
         "sks": data["sks"],
         "pj": nim,
         "day": data["day"],
-        "time": data["time"]
+        "time": data["time"],
+        "kode_undangan": data["kode_undangan"]
     }
 
     model.append(path, [matkul])
@@ -45,7 +58,7 @@ def enrolled (user: dict) -> list:
     enrolled_class = model.find(enrollment_path, "nim", user["nim"])
     data = []
     for i in range(len(enrolled_class)):
-        matkul = find("kode", enrolled_class[i]["kode"])
+        matkul = find("kode_undangan", enrolled_class[i]["kode"])
         data.append(matkul[0])
     return data
 
