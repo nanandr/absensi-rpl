@@ -21,14 +21,10 @@ def current_semester ():
     ]
 
     # determine today's semester
-    current_semester = None
-    for semester in semesters:
-        if today >= semester:
-            current_semester = semester
-        else:
-            break
-
-    return current_semester
+    if today >= semesters[1]:
+        return semesters[1]
+    else:
+        return semesters[0]
 
 def all () -> list:
     return model.read(path)
@@ -56,12 +52,13 @@ def get(data: list, kelas: str) -> list:
         # { nim, nama, absen: [16] }
         absen = [0] * total_weeks
         data_absen = find("nim", mahasiswa["nim"])
+
         for entry in data_absen:
             if entry["kode"] == kelas:
                 # Parse the date from data_absen
                 entry_date = datetime.strptime(entry["timestamp"], "%H:%M:%S.%f %Y-%m-%d")
                 # entry_date = timestamp.date()
-                
+
                 # Calculate the week index
                 week_index = (entry_date - current_semester()).days // 7
 
