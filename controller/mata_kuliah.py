@@ -31,7 +31,7 @@ def join (user: dict):
     view.view.div("-")
     if len(matkul) > 0:
         # NEED TO FIX THIS
-        if any(enrolled["kode"] == data["kode"] for enrolled in model.mata_kuliah.enrolled(user)):
+        if any(enrolled["kode_undangan"] == data["kode"] for enrolled in model.mata_kuliah.enrolled(user)):
             print("Anda sudah bergabung di mata kuliah ini.")
             return
         # THIS TOO
