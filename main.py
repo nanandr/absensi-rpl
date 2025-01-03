@@ -8,23 +8,23 @@ def main ():
     user = {}
     authenticated = False
 
-    # Before login
     while True:
-        view.welcome.guest()
+        while not authenticated:
+            view.welcome.guest()
 
-        nav = menu(["Login", "Register", "Exit"])["val"]
-        if nav == "Login":
-            login_data = controller.auth.login()
-            if login_data["auth"]:
-                authenticated = True
-                user = login_data["user"]
-        elif nav == "Register":
-            signup_data = controller.auth.signup()
-            if signup_data["auth"]:
-                authenticated = True
-                user = signup_data["user"]    
-        elif nav == "Exit":
-            break
+            nav = menu(["Login", "Register", "Exit"])["val"]
+            if nav == "Login":
+                login_data = controller.auth.login()
+                if login_data["auth"]:
+                    authenticated = True
+                    user = login_data["user"]
+            elif nav == "Register":
+                signup_data = controller.auth.signup()
+                if signup_data["auth"]:
+                    authenticated = True
+                    user = signup_data["user"]    
+            elif nav == "Exit":
+                return
 
         while authenticated:
             view.welcome.user()
