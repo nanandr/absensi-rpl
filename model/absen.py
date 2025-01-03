@@ -21,14 +21,10 @@ def current_semester ():
     ]
 
     # determine today's semester
-    current_semester = None
-    for semester in semesters:
-        if today >= semester:
-            current_semester = semester
-        else:
-            break
-
-    return current_semester
+    if today >= semesters[1]:
+        return semesters[1]
+    else:
+        return semesters[0]
 
 def all () -> list:
     return model.read(path)

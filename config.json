@@ -1,7 +1,5 @@
 {
     "university_name": "Universitas Pendidikan Indonesia",
-    "generate_invite": true,
-    "auto_date": true,
     "start_semester": ["01-01", "09-02"],
     "total_weeks": 16
 }
