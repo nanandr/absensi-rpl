@@ -1,10 +1,16 @@
+import json
 import view.view as view
+
+
+with open("config.json", "r") as file:
+    config = json.load(file)
+
+university_name = config["university_name"]
 
 def guest () -> None:
     view.div("=")
     print("Sistem Absensi Mahasiswa")
-    print("Rekayasa Perangkat Lunak")
-    print("Universitas Pendidikan Indonesia")
+    print(university_name)
     view.div("=")
 
 def user () -> None:

@@ -74,7 +74,8 @@ def action (matkul: dict):
     view.div("=")
     print(f"{matkul['nama']}")
     print(f"Dosen Pengampu: {matkul['dosen']}")
-    print(f"Kode Gabung: {matkul['kode']}")
+    print(f"Kode Mata Kuliah: {matkul['kode']}")
+    print(f"Kode Undangan: {matkul['kode_undangan']}")
     view.div("=")
     nav = menu(["Kelola Absensi", "Rekap Absensi", "Edit Mata Kuliah", "Kembali"])
     
@@ -84,7 +85,7 @@ def daftar_mahasiswa (matkul):
     view.div("-")
     print("Daftar Mahasiswa: \n")
     view.div("-")
-    enrolled = get_mahasiswa(matkul["kode"])
+    enrolled = get_mahasiswa(matkul["kode_undangan"])
     for i in range(len(enrolled)):
         print(f"[{i+1}] {enrolled[i]['nama']}")
     # choose indexes

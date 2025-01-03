@@ -1,1 +1,2 @@
-nama,kode,dosen,kode_dosen,sks,pj,day,time
+id,nama,kode,dosen,kode_dosen,sks,pj,day,time,kode_undangan
+2404158_AI001,Pengenalan AI,AI001,Dr. Udin,UD001,3,2404158,0,09:00,AI001_453508
