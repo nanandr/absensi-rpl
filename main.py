@@ -9,7 +9,7 @@ def main ():
     authenticated = False
 
     # Before login
-    while not authenticated:
+    while True:
         view.welcome.guest()
 
         nav = menu(["Login", "Register", "Exit"])["val"]
@@ -26,23 +26,23 @@ def main ():
         elif nav == "Exit":
             break
 
-    while authenticated:
-        view.welcome.user()
+        while authenticated:
+            view.welcome.user()
 
-        nav = menu(["Absen", "Lihat Rekap Absen", "Buat Mata Kuliah", "Gabung Mata Kuliah", "Kelola Mata Kuliah", "Logout"])["val"]
+            nav = menu(["Absen", "Lihat Rekap Absen", "Buat Mata Kuliah", "Gabung Mata Kuliah", "Kelola Mata Kuliah", "Logout"])["val"]
 
-        if nav == "Absen":
-            absen.create(user)
-        elif nav == "Lihat Rekap Absen":
-            absen.rekap(user)
-        elif nav == "Buat Mata Kuliah":
-            mata_kuliah.create(user)
-        elif nav == "Gabung Mata Kuliah":
-            mata_kuliah.join(user)
-        elif nav == "Kelola Mata Kuliah":
-            mata_kuliah.select(user)
-        elif nav == "Logout":
-            authenticated = False
-            break
+            if nav == "Absen":
+                absen.create(user)
+            elif nav == "Lihat Rekap Absen":
+                absen.rekap(user)
+            elif nav == "Buat Mata Kuliah":
+                mata_kuliah.create(user)
+            elif nav == "Gabung Mata Kuliah":
+                mata_kuliah.join(user)
+            elif nav == "Kelola Mata Kuliah":
+                mata_kuliah.select(user)
+            elif nav == "Logout":
+                authenticated = False
+                break
     
 main()
